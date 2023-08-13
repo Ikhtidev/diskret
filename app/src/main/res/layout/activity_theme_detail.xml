@@ -90,7 +90,8 @@
                     android:layout_height="wrap_content"
                     android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:gravity="center_vertical"
-                    android:paddingStart="30dp">
+                    android:paddingStart="30dp"
+                    tools:ignore="RtlSymmetry">
 
                     <com.airbnb.lottie.LottieAnimationView
                         android:id="@+id/imageMuammoli"
@@ -145,7 +146,8 @@
                     android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:paddingStart="30dp">
+                    android:paddingStart="30dp"
+                    tools:ignore="RtlSymmetry">
 
                     <com.airbnb.lottie.LottieAnimationView
                         android:id="@+id/imagePresentation"

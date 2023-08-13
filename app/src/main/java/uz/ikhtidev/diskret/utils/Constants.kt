@@ -15,6 +15,7 @@ class Constants {
             "F",
             "G"
         )
+        var DIALOG_ITEM = ""
         var THEME_LIST:ArrayList<Theme> = ArrayList()
     }
 

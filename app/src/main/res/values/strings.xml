@@ -31,4 +31,17 @@
     <string name="theme_20">Algоritm tushunchasi. Hisоblanuvlanchilik. Primitiv, rekursiv funksiyalar. Qisman rekursiv va rekursiv funksiyalar</string>
     <string name="theme_21">Tyuring mashinalari. Nоrekursiv sanaluvchan tо\'plamlar. Tо\'xtash muammоsi. Algоritmik yechilmas muammоlar</string>
     <string name="theme_22">Rekursiv va rekursiv sanaluvshi tо\'plamlar</string>
+    <string name="o_quv_meyoriy_hujjatlar">O\'quv meyoriy hujjatlar</string>
+    <string name="muallif_haqida">Muallif haqida</string>
+    <string name="fan_haqida_ma_lumot">Fan haqida ma\'lumot</string>
+    <string name="crossword">Krossvordlar</string>
+    <string name="mustaqil_ta_lim">Mustaqil ta\'lim</string>
+    <string name="adabiyotlar_ro_yxati">Adabiyotlar ro\'yxati</string>
+    <string name="natijalarim">Natijalarim</string>
+    <string name="kidt">KIDT</string>
+    <string name="att">ATT</string>
+    <string name="namunaviy_dastur">Namunaviy dastur</string>
+    <string name="ishchi_dastur">Ishchi dastur</string>
+    <string name="yechilgan_testlar">Yechilgan testlar</string>
+    <string name="time_over">Vaqt tugadi!</string>
 </resources>

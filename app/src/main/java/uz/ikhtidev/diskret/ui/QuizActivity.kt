@@ -2,6 +2,7 @@ package uz.ikhtidev.diskret.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
 import android.transition.TransitionManager
@@ -24,6 +25,7 @@ class QuizActivity : AppCompatActivity() {
         ThemeDatabase.getInstance(this)
     }
     private lateinit var themeQuestions: List<QuestionWithVariant>
+    private lateinit var timer: CountDownTimer
     private var currentPage = 0
     private var testsCount = 0
     private var testResult = 0
@@ -54,37 +56,55 @@ class QuizActivity : AppCompatActivity() {
                  }
 
                  override fun onTabUnselected(tab: TabLayout.Tab?) {
-                     //
+                     //nothing
                  }
 
                  override fun onTabReselected(tab: TabLayout.Tab?) {
-                     //
+                     //nothing
                  }
              })
              btnBack.setOnClickListener {
                  finish()
              }
+
          }
-
-        quizAdapter.setListener(object : QuizAdapter.QuizClickListener {
-            override fun onClick(correctAnswer:String, isCorrect: Boolean) {
-
-
-            }
-        })
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = (position + 1).toString()
             tab.view.isClickable = false
         }.attach()
 
+        timer = object: CountDownTimer((themeQuestions.size * 20000).toLong(), 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                val allSeconds = millisUntilFinished/1000
+                val minutes = allSeconds/60
+                val remainSeconds = allSeconds%60
+                var minutesText = minutes.toString()
+                var remainSecondsText = remainSeconds.toString()
+                if (minutes<10) minutesText = "0$minutes"
+                if (remainSeconds<10) remainSecondsText = "0$remainSeconds"
+                "$minutesText:$remainSecondsText".also { binding.timerCounter.text = it }
+            }
+
+            override fun onFinish() {
+                Toast.makeText(this@QuizActivity, getString(R.string.time_over), Toast.LENGTH_SHORT).show()
+                finishQuiz()
+            }
+        }
+        timer.start()
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        timer.cancel()
     }
 
     private fun finishQuiz() {
         Toast.makeText(
             this@QuizActivity,
             String.format(getString(R.string.result_answer),testsCount.toString(),testResult.toString()),
-            Toast.LENGTH_SHORT
+            Toast.LENGTH_LONG
         ).show()
         val currentTheme = themeDatabase.themeDao().getAllThemes()[FILE_NUMBER]
         if (testResult>currentTheme.testResult) {
